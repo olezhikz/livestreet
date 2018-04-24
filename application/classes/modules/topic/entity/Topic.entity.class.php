@@ -25,7 +25,7 @@
  * @package application.modules.topic
  * @since 1.0
  */
-class ModuleTopic_EntityTopic extends Entity
+class ModuleTopic_EntityTopic extends EntityORM
 {
     /**
      * Массив объектов(не всегда) для дополнительных типов топиков(линки, опросы, подкасты и т.п.)

@@ -25,7 +25,7 @@
  * @package application.modules.topic
  * @since 1.0
  */
-class ModuleTopic extends Module
+class ModuleTopic extends ModuleORM
 {
 
     const TOPIC_TYPE_STATE_ACTIVE = 1;
@@ -56,6 +56,7 @@ class ModuleTopic extends Module
      */
     public function Init()
     {
+        parent::Init();
         $this->oMapperTopic = Engine::GetMapper(__CLASS__);
         $this->oUserCurrent = $this->User_GetUserCurrent();
 
@@ -675,6 +676,8 @@ class ModuleTopic extends Module
      */
     public function GetCountTopicsByFilter($aFilter)
     {
+        $this->Hook_Run('get_count_topics_by_custom_filter', array('aFilter' => &$aFilter));
+        
         $s = serialize($aFilter);
         if (false === ($data = $this->Cache_Get("topic_count_{$s}"))) {
             $data = $this->oMapperTopic->GetCountTopics($aFilter);
