@@ -1,9 +1,6 @@
 [submodule "framework"]
 	path = framework
 	url = https://github.com/livestreet/livestreet-framework.git
-[submodule "plugins/admin"]
-	path = plugins/admin
-	url = https://olezhikz:GfhjkmLkzGithub2017@github.com/olezhikz/lsplugin-admin
 [submodule "application/plugins/admin"]
 	path = application/plugins/admin
 	url = https://olezhikz:GfhjkmLkzGithub2017@github.com/olezhikz/lsplugin-admin
