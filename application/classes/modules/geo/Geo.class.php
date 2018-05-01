@@ -177,6 +177,7 @@ class ModuleGeo extends Module
         if (!$this->CheckTarget($sTargetType, $iTargetId)) {
             return false;
         }
+        
         /**
          * Проверяем есть ли уже у этого объекта другие связи
          */

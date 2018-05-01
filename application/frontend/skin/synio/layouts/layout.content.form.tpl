@@ -44,5 +44,5 @@
         {$aLang.topic.add.title.add}
     {else}
         {$aLang.topic.add.title.edit}
-    {/if}
+    {/if}{$topicType->getName()}
 {/block}

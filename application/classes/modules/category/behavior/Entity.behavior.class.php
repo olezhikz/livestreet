@@ -107,6 +107,7 @@ class ModuleCategory_BehaviorEntity extends Behavior
      */
     public function CallbackAfterSave()
     {
+        
         $this->Category_SaveCategories($this->oObject, $this->getParam('target_type'),
             $this->getParam('callback_count_target'));
     }
@@ -137,10 +138,10 @@ class ModuleCategory_BehaviorEntity extends Behavior
         if (!$oTypeCategory = $this->Category_GetTypeByTargetType($this->getParam('target_type'))) {
             return 'Неверный тип категорий';
         }
-
         if ($this->getParam('validate_from_request')) {
             $mValue = getRequest($this->getParam('form_field'));
         }
+        
         /**
          * Значение может быть числом, массивом, строкой с разделением через запятую
          */

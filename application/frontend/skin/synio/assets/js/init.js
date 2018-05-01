@@ -659,7 +659,8 @@ jQuery(document).ready(function($){
     $( '.fotorama' ).livequery(function() {
         $( this ).lsSlider();
     });
-
+    
+    
     // Хук конца инициализации javascript-составляющих шаблона
     ls.hook.run('ls_template_init_end',[],window);
 });

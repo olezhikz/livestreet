@@ -127,11 +127,10 @@
             }
         },
 
-        updateFilter: function( filter ) {
+        updateFilter: function( filter ) { 
             var _this = this,
                 element = $( filter.selector ),
                 activeClass = filter.activeClass || ls.options.classes.states.active;
-
             switch ( filter.type ) {
                 // Текстовое поле
                 case 'text':
@@ -198,6 +197,7 @@
          * Обновление поиска
          */
         update: function() {
+            this.option( 'params', {});
             for (var i = 0; i < this.option( 'filters' ).length; i++) {
                 this.updateFilter( this.option( 'filters' )[i] );
             };

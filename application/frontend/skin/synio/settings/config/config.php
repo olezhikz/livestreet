@@ -65,6 +65,17 @@ $config['block']['rule_profile'] = array(
     )
 );
 
+
+/*
+ * Убрать блоки с подсказками в топике
+ */
+$config['block']['rule_topic_type'] = array(
+    'action' => array(
+        'content' => array('addw', 'editw'),
+    ),
+    'blocks' => array('right' => array('component@blog.block.info-note')),
+);
+
 // Подключение скриптов шаблона
 $config['head']['template']['js'] = array(
 	'___path.skin.assets.web___/js/init.js'
