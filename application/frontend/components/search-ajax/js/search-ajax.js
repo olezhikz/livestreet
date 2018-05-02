@@ -56,6 +56,16 @@
                 _this._initFilter( value );
             });
 
+            window.onpopstate = function (event) {
+                $.each(event.state, function(key, val){
+                    this.setParam(key, val);
+                }.bind(this));
+                
+                this._trigger( 'beforeupdate', null, this );
+
+                this._load( 'search', 'onUpdate' );
+            }.bind(this);
+            
             // Кнопка подгрузки
             this.elements.more.lsMore({
                 urls: {
@@ -183,7 +193,6 @@
          */
         setParam: function( name, value ) {
             this.option( 'params.' + name, value );
-            // this.updateUrl();
         },
 
         /**
@@ -196,15 +205,16 @@
         /**
          * Обновление поиска
          */
-        update: function() {
-            this.option( 'params', {});
+        update: function( params ) {
+            params = params || {};
+            this.option( 'params', params);
             for (var i = 0; i < this.option( 'filters' ).length; i++) {
                 this.updateFilter( this.option( 'filters' )[i] );
             };
 
             this._trigger( 'beforeupdate', null, this );
 
-            this._load( 'search', 'onUpdate' );
+            this._load( 'search', 'onUpdatePushState' );
         },
 
         /**
@@ -212,7 +222,7 @@
          */
         onUpdate: function ( response ) {
             this.elements.more[ response.hide ? 'hide' : 'show' ]();
-
+            
             if ( response.searchCount ) {
                 this.elements.list.show().html( $.trim( response.html ) );
             } else {
@@ -225,12 +235,29 @@
 
             this._trigger( 'afterupdate', null, { context: this, response: response } );
         },
+        
+        onUpdatePushState: function ( response ) {
+            this.updateUrl( response );
+            this.onUpdate( response );
+        },
 
         /**
          * Обновляет ссылку на основе параметров
          */
-        updateUrl: function () {
-            window.history.pushState( {}, 'Search', window.location.origin + window.location.pathname + '?' + $.param( this.option( 'params' ) ) );
+        updateUrl: function (response) {
+            let url = response.sBaseUrl || '';
+            let requestAllow = response.requestAllow || {};
+            let request = response.request|| {};
+            let title = response.sTitle || 'Search';
+            let page = response.iPage || 1;
+            
+            url += 'page' + page + '/';
+            
+            if( Object.keys(requestAllow).length !== 0){
+                url += '?' + $.param( requestAllow );
+            }
+            window.history.pushState( request, title, url );
+            
         }
     });
 })( jQuery );
