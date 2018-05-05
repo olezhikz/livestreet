@@ -56,6 +56,7 @@
                 _this._initFilter( value );
             });
 
+            //TODO: отрабатывает не чисто
             window.onpopstate = function (event) {
                 $.each(event.state, function(key, val){
                     this.setParam(key, val);
