@@ -25,7 +25,7 @@
  * @package application.modules.topic
  * @since 1.0
  */
-class ModuleTopic_EntityTopicRead extends Entity
+class ModuleTopic_EntityTopicRead extends EntityORM
 {
     /**
      * Возвращает ID топика
