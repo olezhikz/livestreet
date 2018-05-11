@@ -54,7 +54,7 @@ class ModuleProperty_EntityValueTypeFloat extends ModuleProperty_EntityValueType
     {
         $this->resetAllValue();
         $oValue = $this->getValueObject();
-        $oValue->setValueFloat($mValue ? $mValue : null);
+        $oValue->setValueFloat(($mValue !== null) ? $mValue : null);
     }
 
     public function prepareValidateRulesRaw($aRulesRaw)
