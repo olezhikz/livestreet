@@ -7,3 +7,6 @@
 [submodule "application/plugins/ad"]
 	path = application/plugins/ad
 	url = https://olezhikz@github.com/olezhikz/livestreet-ad
+[submodule "application/plugins/ymaps"]
+	path = application/plugins/ymaps
+	url = https://olezhikz@github.com/olezhikz/livestreet-ymaps

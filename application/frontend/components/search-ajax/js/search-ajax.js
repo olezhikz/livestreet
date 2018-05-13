@@ -55,6 +55,11 @@
             $.each( this.option( 'filters' ), function ( index, value ) {
                 _this._initFilter( value );
             });
+            
+            $(this.option('selectors.button')).on('click', function(){
+                this.update();
+                return false;
+            }.bind(this))
 
             //TODO: отрабатывает не чисто
             window.onpopstate = function (event) {
