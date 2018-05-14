@@ -1,5 +1,14 @@
 {$component = 'toggle'}
-{component_define_params params=['label', 'items', 'mods', 'classes', 'attributes' ]}
+{component_define_params params=['label', 'items', 'mods', 'classes', 'attributes', 'hook' ]}
+
+{* Получаем пункты установленные плагинами *}
+{if $hook}
+    {hook run="toggle_{$hook}" assign='hookItems' params=$hookParams items=$items array=true}
+    {$items = ( $hookItems ) ? $hookItems : $items}
+{/if}
+
+{* Smarty-блок для изменения опций *}
+{block 'toggle_options'}{/block}
 
 {$buttons=[
     [  

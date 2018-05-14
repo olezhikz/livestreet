@@ -257,7 +257,7 @@
             let title = response.sTitle || 'Search';
             let page = response.iPage || 1;
             
-            url += 'page' + page + '/';
+            //url += 'page' + page + '/';
             
             if( Object.keys(requestAllow).length !== 0){
                 url += '?' + $.param( requestAllow );

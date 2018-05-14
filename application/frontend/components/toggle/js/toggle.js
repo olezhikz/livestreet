@@ -10,8 +10,12 @@
                 buttons:".js-item-toggle"
                 
             },
+            classes:{
+                active:"active"
+            },
             params: {}
-        },        
+        },   
+        activeItem:null,
 
         _create: function () {
             this._super();
@@ -20,12 +24,21 @@
             
         },
         
+        getActive:function(){
+            return this.activeItem;
+        },
         
         onClick:function(e){
-            this.elements.buttons.removeClass('ls-button.active').prop('disabled', false);
-            $(e.currentTarget).addClass('ls-button.active').prop('disabled', true);
+            if(this.activeItem !== null){
+                this.activeItem.removeClass( this.option('classes.active') );
+                this._trigger( 'aftertogglefrom' + this.activeItem.attr('name'), null, { context: this, button: this.activeItem } );
+            }
             
-            this._trigger( 'aftertoggle', null, { context: this, button: e.currentTarget } );
+            this.activeItem = $(e.currentTarget);
+                        
+            this.activeItem.addClass( this.option('classes.active') );
+                        
+            this._trigger( 'aftertoggleto' + this.activeItem.attr('name'), null, { context: this, button: this.activeItem } );
         }
     });
 })(jQuery);
