@@ -71,6 +71,15 @@ return array(
             'empty'           => 'Nothing found',
             'query_incorrect' => 'Minimum search length is 3 symbols',
         ),
+        
+        //Вид
+        'toggle_view' => [
+            'label' => 'View',
+            'items' => [
+                'list' => 'List',
+                'tile' => 'Tile'
+            ]
+        ]  
     ),
     /**
      * Сортировка
