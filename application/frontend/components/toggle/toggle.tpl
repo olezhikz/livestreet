@@ -21,6 +21,7 @@
 
 {foreach $items as $item}
     {$item.classes = "js-item-toggle"}
+    {$item.type = "button"}
     {$buttons[] = $item}
 {/foreach}
 
