@@ -1,5 +1,5 @@
 {$component = 'toggle'}
-{component_define_params params=['label', 'items', 'mods', 'classes', 'attributes', 'hook' ]}
+{component_define_params params=['label', 'items', 'mods', 'classes', 'attributes', 'hook', 'activeItem' ]}
 
 {* Получаем пункты установленные плагинами *}
 {if $hook}
@@ -22,6 +22,10 @@
 {foreach $items as $item}
     {$item.classes = "js-item-toggle"}
     {$item.type = "button"}
+    {$item.attributes['name'] = $item.name}
+    {if $item.name == $activeItem}
+        {$item.classes = "{$item.classes} active"}
+    {/if}
     {$buttons[] = $item}
 {/foreach}
 

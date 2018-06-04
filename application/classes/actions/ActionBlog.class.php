@@ -797,7 +797,7 @@ class ActionBlog extends Action
      *
      */
     protected function EventShowTopic()
-    {
+    { 
         $iTopicId = $this->GetEventMatch(1);
         $this->sMenuItemSelect = 'blog';
         $this->sMenuSubItemSelect = '';

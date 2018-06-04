@@ -201,6 +201,30 @@ class ModuleProperty_EntityProperty extends EntityORM
         }
         return $aData;
     }
+    
+    /**
+     * Возвращает правила валидации поля для формы
+     *
+     * @return array
+     */
+    public function getValidateRulesForm()
+    {
+        $aRules = $this->getValidateRules();
+        
+        $oValueType = $this->getValueTypeObject();
+        
+        $aRulesConvert = $oValueType->prepareValidateForForm($aRules);
+        
+        if(isset($aRules['allowEmpty'])){
+            $aRulesConvert['required'] = !$aRules['allowEmpty'];
+        }
+        
+        $aRulesConvert['group'] = "property";
+        
+        return $aRulesConvert;
+    }
+    
+    
 
     /**
      * Возвращает экранированный список правил валидации

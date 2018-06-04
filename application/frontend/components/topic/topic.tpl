@@ -211,7 +211,7 @@
             <div class="ls-tooltip" id="topic_share_{$topic->getId()}">
                 <div class="ls-tooltip-content js-ls-tooltip-content">
                     {hookb run="topic_share" topic=$topic isList=$isList}
-                        <div class="yashare-auto-init" data-yashareTitle="{$topic->getTitle()|escape}" data-yashareLink="{$topic->getUrl()}" data-yashareL10n="ru" data-yashareType="small" data-yashareTheme="counter" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div>
+                        <div class="ya-share2" data-yashareTitle="{$topic->getTitle()|escape}" data-yashareLink="{$topic->getUrl()}" data-yashareL10n="ru" data-yashareType="small" data-yashareTheme="counter" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div>
                     {/hookb}
                 </div>
             </div>

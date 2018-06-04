@@ -573,5 +573,30 @@ class ModuleCategory extends ModuleORM
         $this->Text_RemoveParams(array('oCategory'));
         return $sResult;
     }
+    
+    /**
+     * Получить все категории по урлу
+     *
+     * @param string $sUrl
+     *
+     * @return array
+     */
+    public function GetCategoriesByUrlFull($sUrl) {
+        if(!$sUrl){
+            return false;
+        }
+        $aUrls = explode('/', trim($sUrl));
+        $aUrlsField = [];
+        foreach($aUrls as $sUrl){
+            $aUrlsField[] = "'".$sUrl."'";
+        }
+        $aCategories = $this->GetCategoryItemsByFilter([
+            '#index-from' => 'id',
+            'url in' => $aUrls,
+            '#select' => ['id', 'title', 'url_full', 'url'],
+            '#order' => ['field:url' => $aUrlsField]
+        ]);  
+        return $aCategories;        
+    }
 
 }

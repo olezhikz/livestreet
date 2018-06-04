@@ -116,6 +116,10 @@ class ModuleProperty_EntityValueType extends Entity
     {
         return array();
     }
+    
+    public function prepareValidateForForm($aRules) {
+        return $aRules;
+    }
 
     public function getValidateRulesDefault()
     {

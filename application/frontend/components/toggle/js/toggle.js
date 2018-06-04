@@ -21,7 +21,7 @@
             this._super();
             
            this._on(this.elements.buttons, {click:"onClick"});
-            
+           this.activeItem = $(this.element.find( this.option('selectors.buttons') + '.active' ));
         },
         
         getActive:function(){

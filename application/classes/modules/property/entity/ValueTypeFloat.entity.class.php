@@ -70,6 +70,14 @@ class ModuleProperty_EntityValueTypeFloat extends ModuleProperty_EntityValueType
         }
         return $aRules;
     }
+    
+    public function prepareValidateForForm($aRules) {
+        $aRulesPrepare = [
+            'trigger' => "change keyup",
+        ];        
+        
+        return $aRulesPrepare;
+    }
 
     public function prepareParamsRaw($aParamsRaw)
     {

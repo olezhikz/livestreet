@@ -421,6 +421,15 @@ class ModuleTopic_EntityTopic extends EntityORM
     {
         return $this->_getDataOne('topic_text_short');
     }
+    
+    /**
+     * Возвращает короткий текст топика (количество слов)
+     *
+     * @return string|null
+     */
+    public function getTextWords($iCount = 20) {
+        return func_text_words($this->getText(), $iCount);
+    }
 
     /**
      * Возвращает исходный текст топика, без примененя парсера тегов

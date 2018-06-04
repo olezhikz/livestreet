@@ -6,5 +6,6 @@
         label      = 'Фотосет'
         modalTitle = 'Выбор фото'
         targetType = 'imageset'
+        rules   = $property->getValidateRulesForm()
         targetId   = $valueType->getValueForForm()
         classes    = 'js-imageset-field'}

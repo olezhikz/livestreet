@@ -471,7 +471,7 @@ class ModuleACL extends Module
         /**
          * Если автор(смотритель) блога
          */
-        if ($oTopic->getBlog()->getOwnerId() == $oUser->getId()) {
+        if ($oTopic->getBlog() and $oTopic->getBlog()->getOwnerId() == $oUser->getId()) {
             return true;
         }
         /**
@@ -481,7 +481,7 @@ class ModuleACL extends Module
             /**
              * Для авторизованного пользователя данный код будет работать быстрее
              */
-            if ($oTopic->getBlog()->getUserIsAdministrator() or $oTopic->getBlog()->getUserIsModerator()) {
+            if ($oTopic->getBlog() and ($oTopic->getBlog()->getUserIsAdministrator() or $oTopic->getBlog()->getUserIsModerator())) {
                 return true;
             }
         } else {
@@ -602,7 +602,7 @@ class ModuleACL extends Module
                 /**
                  * Если автор(смотритель) блога
                  */
-                if ($oTopic->getBlog()->getOwnerId() == $oUser->getId()) {
+                if ($oTopic->getBlog() and $oTopic->getBlog()->getOwnerId() == $oUser->getId()) {
                     return true;
                 }
                 /**
@@ -612,7 +612,7 @@ class ModuleACL extends Module
                     /**
                      * Для авторизованного пользователя данный код будет работать быстрее
                      */
-                    if ($oTopic->getBlog()->getUserIsAdministrator() or $oTopic->getBlog()->getUserIsModerator()) {
+                    if ($oTopic->getBlog() and ($oTopic->getBlog()->getUserIsAdministrator() or $oTopic->getBlog()->getUserIsModerator())) {
                         return true;
                     }
                 } else {

@@ -141,7 +141,7 @@ $config['module']['topic']['per_page'] = 10;          // Число топико
 $config['module']['topic']['max_length'] = 15000;       // Максимальное количество символов в одном топике
 $config['module']['topic']['min_length'] = 2;       // Минимальное количество символов в одном топике
 $config['module']['topic']['allow_empty'] = false;       // Разрешать или нет не заполнять текст топика
-$config['module']['topic']['title_max_length'] = 200;       // Максимальное количество символов в заголовке топика
+$config['module']['topic']['title_max_length'] = 100;       // Максимальное количество символов в заголовке топика
 $config['module']['topic']['title_min_length'] = 2;       // Минимальное количество символов в заголовке топика
 $config['module']['topic']['title_allow_empty'] = false;       // Разрешать или нет не заполнять заголовок топика
 $config['module']['topic']['tags_allow_empty'] = false; // Разрешать или нет не заполнять теги
@@ -585,7 +585,7 @@ $config['head']['default']['js'] = array(
     //"___path.skin.web___/components/ls-vendor/html5shiv.js" => array('browser' => 'lt IE 9'),
     //"___path.skin.web___/components/ls-vendor/jquery.placeholder.min.js" => array('browser' => 'lt IE 9'),
 
-    //"//yastatic.net/share/share.js" => array('merge' => false),
+    "//yastatic.net/share/share.js" => array('merge' => false),
     //"https://www.google.com/recaptcha/api.js?onload=__do_nothing__&render=explicit" => array('merge' => false),
 );
 

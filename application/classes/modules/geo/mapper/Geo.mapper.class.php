@@ -230,6 +230,7 @@ class ModuleGeo_MapperGeo extends Mapper
 				WHERE
 					1 = 1
 					{ AND id = ?d }
+                                        { AND id IN ( ?a ) }
 					{ AND name_ru = ? }
 					{ AND name_ru LIKE ? }
 					{ AND name_en = ? }
@@ -241,7 +242,8 @@ class ModuleGeo_MapperGeo extends Mapper
 					";
         $aResult = array();
         if ($aRows = $this->oDb->selectPage($iCount, $sql,
-            isset($aFilter['id']) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and !is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru']) ? $aFilter['name_ru'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru_like']) ? $aFilter['name_ru_like'] : DBSIMPLE_SKIP,
             isset($aFilter['name_en']) ? $aFilter['name_en'] : DBSIMPLE_SKIP,
@@ -251,7 +253,7 @@ class ModuleGeo_MapperGeo extends Mapper
         )
         ) {
             foreach ($aRows as $aRow) {
-                $aResult[] = Engine::GetEntity('ModuleGeo_EntityCountry', $aRow);
+                $aResult[$aRow['id']] = Engine::GetEntity('ModuleGeo_EntityCountry', $aRow);
             }
         }
         return $aResult;
@@ -294,6 +296,7 @@ class ModuleGeo_MapperGeo extends Mapper
 				WHERE
 					1 = 1
 					{ AND id = ?d }
+                                        { AND id IN ( ?a ) }
 					{ AND name_ru = ? }
 					{ AND name_ru LIKE ? }
 					{ AND name_en = ? }
@@ -305,7 +308,8 @@ class ModuleGeo_MapperGeo extends Mapper
 					";
         $aResult = array();
         if ($aRows = $this->oDb->selectPage($iCount, $sql,
-            isset($aFilter['id']) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and !is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru']) ? $aFilter['name_ru'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru_like']) ? $aFilter['name_ru_like'] : DBSIMPLE_SKIP,
             isset($aFilter['name_en']) ? $aFilter['name_en'] : DBSIMPLE_SKIP,
@@ -315,7 +319,7 @@ class ModuleGeo_MapperGeo extends Mapper
         )
         ) {
             foreach ($aRows as $aRow) {
-                $aResult[] = Engine::GetEntity('ModuleGeo_EntityRegion', $aRow);
+                $aResult[$aRow['id']] = Engine::GetEntity('ModuleGeo_EntityRegion', $aRow);
             }
         }
         return $aResult;
@@ -361,6 +365,7 @@ class ModuleGeo_MapperGeo extends Mapper
 				WHERE
 					1 = 1
 					{ AND id = ?d }
+                                        { AND id IN ( ?a ) }
 					{ AND name_ru = ? }
 					{ AND name_ru LIKE ? }
 					{ AND name_en = ? }
@@ -371,9 +376,11 @@ class ModuleGeo_MapperGeo extends Mapper
 				ORDER by {$sOrder}
 				LIMIT ?d, ?d ;
 					";
+
         $aResult = array();
         if ($aRows = $this->oDb->selectPage($iCount, $sql,
-            isset($aFilter['id']) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and !is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
+            (isset($aFilter['id']) and is_array($aFilter['id'])) ? $aFilter['id'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru']) ? $aFilter['name_ru'] : DBSIMPLE_SKIP,
             isset($aFilter['name_ru_like']) ? $aFilter['name_ru_like'] : DBSIMPLE_SKIP,
             isset($aFilter['name_en']) ? $aFilter['name_en'] : DBSIMPLE_SKIP,
@@ -384,10 +391,10 @@ class ModuleGeo_MapperGeo extends Mapper
         )
         ) {
             foreach ($aRows as $aRow) {
-                $aResult[] = Engine::GetEntity('ModuleGeo_EntityCity', $aRow);
+                $aResult[$aRow['id']] = Engine::GetEntity('ModuleGeo_EntityCity', $aRow);
             }
         }
-        return $aResult;
+        return $aResult;        
     }
 
     public function GetCountriesUsedByTargetType($sTargetType)

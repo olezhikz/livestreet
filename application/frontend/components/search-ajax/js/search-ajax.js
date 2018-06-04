@@ -96,7 +96,7 @@
          */
         _initFilter: function( filter ) {
             var _this = this,
-                element = $( filter.selector );
+                element = $( filter.selector ); 
 
             switch ( filter.type ) {
                 // Текстовое поле
@@ -257,7 +257,7 @@
             let title = response.sTitle || 'Search';
             let page = response.iPage || 1;
             
-            //url += 'page' + page + '/';
+            url += 'page' + page + '/';
             
             if( Object.keys(requestAllow).length !== 0){
                 url += '?' + $.param( requestAllow );

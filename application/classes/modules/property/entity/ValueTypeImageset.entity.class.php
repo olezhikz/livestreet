@@ -164,6 +164,16 @@ class ModuleProperty_EntityValueTypeImageset extends ModuleProperty_EntityValueT
         return $aParams;
     }
     
+    public function prepareValidateForForm($aRules) {
+        $aRulesPrepare = [
+            'trigger' => "change",
+        ];
+        $aRulesPrepare['min'] = $aRules['count_min'];
+        $aRulesPrepare['max'] = $aRules['count_max'];
+        
+        return $aRulesPrepare;
+    }
+    
     public function getParamsDefault()
     {
         return array(
