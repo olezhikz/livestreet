@@ -10,3 +10,6 @@
 [submodule "application/plugins/ymaps"]
 	path = application/plugins/ymaps
 	url = https://olezhikz@github.com/olezhikz/livestreet-ymaps
+[submodule "application/frontend/skin/profimaster"]
+	path = application/frontend/skin/profimaster
+	url = https://github.com/olezhikz/lsskin-profimaster
