@@ -140,6 +140,10 @@ class ModuleProperty_EntityValueType extends Entity
     {
 
     }
+    
+    public function afterSaveValue() {
+        
+    }
 
     public function removeValue()
     {

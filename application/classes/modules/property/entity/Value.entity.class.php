@@ -40,6 +40,16 @@ class ModuleProperty_EntityValue extends EntityORM
         }
         return $bResult;
     }
+    
+    protected function afterSave()
+    {
+        parent::afterSave();
+        
+        $oValueType = $this->getValueTypeObject();
+        $oValueType->afterSaveValue();
+        
+        return true;
+    }
 
     public function getValueForDisplay()
     {

@@ -52,9 +52,12 @@ class ModuleProperty_EntityValueTypeImageset extends ModuleProperty_EntityValueT
     public function beforeSaveValue() { 
         $mValue = $this->getValueForValidate();
         
-        $aMediaTargets = $this->getMediaTargetsImageset($mValue, 'media_id');        
+        
+        $aMediaTargets = $this->getMediaTargetsImageset($mValue, 'media_id');    
         
         $this->Media_DeleteTargetItemsByFilter( $this->getMediaTargetsFilter($mValue) );
+        
+        
         
         $aMediaTargetIds = [];
         foreach($aMediaTargets as $oMediaTarget){
@@ -63,8 +66,17 @@ class ModuleProperty_EntityValueTypeImageset extends ModuleProperty_EntityValueT
         }
         
         $this->oValue->setData( $aMediaTargetIds );
-                
-        $this->Media_ReplaceTargetTmpById('imageset', $this->oValue->getId());
+        
+        return false;
+    }
+    
+    public function afterSaveValue() {
+        $this->Media_ReplaceTargetTmpById('imageset', $this->oValue->getId());   
+        
+        /*
+         * Очистка от ошибочных медиа таргетов
+         */
+        $this->Media_DeleteTargetItemsByFilter( ['#where' => ['t.target_type = ? AND t.target_id IS NULL' => ['imageset']] ] );   
         
         return true;
     }
@@ -108,13 +120,13 @@ class ModuleProperty_EntityValueTypeImageset extends ModuleProperty_EntityValueT
     public function validate()
     {
         $mValue = $this->getValueForValidate();
-                
+        
         $oProperty = $this->oValue->getProperty();        
         if( !$mValue and !$oProperty->getValidateRuleOne('allowEmpty')){
             return $this->Lang_Get('property.notices.validate_value_file_empty');
         }
 
-        $aMediaTargets = $this->getMediaTargetsImageset($mValue);                
+        $aMediaTargets = $this->getMediaTargetsImageset($mValue);        
 
         if($iMin = $oProperty->getValidateRuleOne('count_min') and $iMin > sizeof($aMediaTargets)){
             return $this->Lang_Get('property.notices.validate_value_select_min', array('count' => $iMin));
