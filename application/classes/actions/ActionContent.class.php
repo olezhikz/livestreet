@@ -551,6 +551,7 @@ class ActionContent extends Action
         }
 
         $this->Hook_Run('topic_add_validate_before', array('oTopic' => $oTopic));
+         
         if ($oTopic->_Validate()) {
             if ($oTopic->getPublishDateRaw()) {
                 $oTopic->setDatePublish(date("Y-m-d H:i:s", $oTopic->getPublishDateRaw()));

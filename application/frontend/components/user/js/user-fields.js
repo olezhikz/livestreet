@@ -57,10 +57,10 @@
          * Добавление контакта
          */
         add: function( event ) {
-            var typeId, template = this.getTemplate();
+            var typeId, template = this.getTemplate(); 
 
             template.find( 'option' ).each(function ( key, value ) {
-                var id = $( value ).val();
+                var id = $( value ).val();console.log(this.getCountByTypeId( id ))
 
                 if ( this.getCountByTypeId( id ) < this.option( 'max' ) ) {
                     typeId = id;

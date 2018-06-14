@@ -100,6 +100,7 @@ class HookMain extends Hook
                 'topic_max_blog_count'  => Config::Get('module.topic.max_blog_count'),
                 'block_stream_show_tip' => Config::Get('block.stream.show_tip'),
                 'poll_max_answers'      => Config::Get('module.poll.max_answers'),
+                'userfield_max_identical' => Config::Get('module.user.userfield_max_identical'),
             )
         );
 

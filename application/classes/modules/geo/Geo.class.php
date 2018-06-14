@@ -527,7 +527,7 @@ class ModuleGeo extends Module
      * @param arr $aTargets массив таргетов
      * @return arr
      */
-    public function GetGeoObjectsByTargets($aTargets)
+    public function GetGeoObjectsByTargets($aTargets =[])
     {
         $aGeoCountryIds = [];
         $aGeoRegoinIds = [];
