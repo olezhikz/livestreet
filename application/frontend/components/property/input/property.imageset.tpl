@@ -8,4 +8,4 @@
         targetType = 'imageset'
         rules   = $property->getValidateRulesForm()
         targetId   = $valueType->getValueForForm()
-        classes    = 'js-imageset-field'}
+        classes    = 'js-imageset-field'}{$property->getValidateRulesForm()|print_r}

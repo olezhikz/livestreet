@@ -20,7 +20,7 @@
         label  = $aLang.auth.labels.login}
 
     {* E-mail *}
-    {component 'field' template='email' rules=[ 'remote' => "{router page='auth'}ajax-validate-email" ]}
+    {component 'field' name="mail"  template='email' rules=[ 'remote' => "{router page='auth'}ajax-validate-email" ]}
 
     {* Пароль *}
     {component 'field' template='text'

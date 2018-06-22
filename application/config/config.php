@@ -31,6 +31,7 @@ define('LS_VERSION', '2.0.1');
  * например, для директории первой вложенности www.site.ru/livestreet/ поставить значение равное 1
  */
 $config['path']['root']['server'] = dirname(dirname(dirname(__FILE__)));
+//TODO: вообще ssl может быть
 $config['path']['root']['web'] = isset($_SERVER['HTTP_HOST']) ? 'http://' . $_SERVER['HTTP_HOST'] : null;
 $config['path']['offset_request_url'] = 0;
 
