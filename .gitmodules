@@ -13,3 +13,6 @@
 [submodule "application/frontend/skin/profimaster"]
 	path = application/frontend/skin/profimaster
 	url = https://github.com/olezhikz/lsskin-profimaster
+[submodule "application/plugins/sociality"]
+	path = application/plugins/sociality
+	url = https://github.com/olezhikz/livestreet-sociality
