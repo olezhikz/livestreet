@@ -467,7 +467,7 @@ $config['router']['page']['stream'] = 'ActionStream';
 $config['router']['page']['subscribe'] = 'ActionSubscribe';
 $config['router']['page']['content'] = 'ActionContent';
 $config['router']['page']['property'] = 'ActionProperty';
-$config['router']['page']['wall'] = 'ActionWall';
+
 $config['router']['page']['sitemap'] = function() {
     return LS::Sitemap_ShowSitemap();
 };
